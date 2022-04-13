@@ -18,5 +18,6 @@ streamlit.text('🥑🍞 Avocado Toast')
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 #We'll add a user interactive widget called a Multi-select that will allow users to pick the fruits they want in their smoothies.
-streamlit.multiselect("Pick some fruit:", list(fruits_list.index),['Avocado', 'Strawberries'])
-streamlit.dataframe(fruits_list)
+fruit_selected = streamlit.multiselect("Pick some fruit:", list(fruits_list.index),['Avocado', 'Strawberries'])
+fruit_to_show = fruits_list.loc[fruit_selected]
+streamlit.dataframe(fruit_to_show)
