@@ -4,6 +4,7 @@ import pandas as pd
 
 #Create a Fruit List Dataframe
 fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+fruits_list = fruits_list.set_index("Fruit")
 
 
 streamlit.title('My First Streamlit App')
