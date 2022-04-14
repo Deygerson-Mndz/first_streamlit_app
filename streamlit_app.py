@@ -8,7 +8,7 @@ fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw
 fruits_list = fruits_list.set_index("Fruit")
 
 #Varible with API response
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
 fruityvice_response_normalized = pd.json_normalize(fruityvice_response.json())
 
 #Title app
