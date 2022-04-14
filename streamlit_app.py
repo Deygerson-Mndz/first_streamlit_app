@@ -1,10 +1,14 @@
 #Import Librarys
 import streamlit
 import pandas as pd
+import requests
 
 #Create a Fruit List Dataframe
 fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 fruits_list = fruits_list.set_index("Fruit")
+
+#Varible with API response
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 
 
 streamlit.title('My First Streamlit App')
@@ -21,3 +25,4 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 fruit_selected = streamlit.multiselect("Pick some fruit:", list(fruits_list.index),['Avocado', 'Strawberries'])
 fruit_to_show = fruits_list.loc[fruit_selected]
 streamlit.dataframe(fruit_to_show)
+streamlit.text(fruityvice_response)
