@@ -8,7 +8,7 @@ fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw
 fruits_list = fruits_list.set_index("Fruit")
 
 #Varible with API response
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choise)
 fruityvice_response_normalized = pd.json_normalize(fruityvice_response.json())
 
 #Title app
@@ -31,4 +31,6 @@ streamlit.dataframe(fruit_to_show)
 
 #Header 
 streamlit.header('Fruityvice Fruit Advice!')
+fruit_choise = streamlit.text_input('What Fruit would you like information about?', 'kiwi')
+streamlit.write('The user entered', fruit_choise)
 streamlit.dataframe(fruityvice_response_normalized )
