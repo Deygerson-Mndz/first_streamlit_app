@@ -2,7 +2,7 @@
 import streamlit
 import pandas as pd
 import requests
-import snowflake.connector
+
 
 #Create a Fruit List Dataframe
 fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
