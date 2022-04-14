@@ -9,6 +9,7 @@ fruits_list = fruits_list.set_index("Fruit")
 
 #Varible with API response
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+fruityvice_response_normalized = pd.json_normalize(fruityvice_response.json())
 
 
 streamlit.title('My First Streamlit App')
@@ -25,4 +26,4 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 fruit_selected = streamlit.multiselect("Pick some fruit:", list(fruits_list.index),['Avocado', 'Strawberries'])
 fruit_to_show = fruits_list.loc[fruit_selected]
 streamlit.dataframe(fruit_to_show)
-streamlit.text(fruityvice_response.json())
+streamlit.dataframe(fruityvice_response_normalized )
