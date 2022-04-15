@@ -26,13 +26,13 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 fruit_selected = streamlit.multiselect("Pick some fruit:", list(fruits_list.index),['Avocado', 'Strawberries'])
 fruit_to_show = fruits_list.loc[fruit_selected]
 streamlit.dataframe(fruit_to_show)
-#streamlit.stop()
+
 
 #Header 
 streamlit.header('Fruityvice Fruit Advice!')
 fruit_choise = streamlit.text_input('What Fruit would you like information about?', 'kiwi')
 streamlit.write('The user entered', fruit_choise)
-streamlit.stop()
+#streamlit.stop()
 
 #Varible with API response
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choise)
