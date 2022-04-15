@@ -32,14 +32,16 @@ streamlit.header('Fruityvice Fruit Advice!')
 #New section to display API response
 try:
   fruit_choise = streamlit.text_input('What Fruit would you like information about?','kiwi')
-  streamlit.write('The user entered', fruit_choise)
+  #streamlit.write('The user entered', fruit_choise)
   if not fruit_choise:
     streamlit.error('Please select a fruit to get information')
   else:
-    #Varible with API response
     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choise)
     fruityvice_response_normalized = pd.json_normalize(fruityvice_response.json())
     streamlit.dataframe(fruityvice_response_normalized )
+   
+ except URLError as e:
+  streamlit.error()
     
 streamlit.stop()
 
