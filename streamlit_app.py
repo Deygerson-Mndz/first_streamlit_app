@@ -66,6 +66,8 @@ def insert_rows_into_snowflake():
     my_cur.execute("INSERT INTO FRUIT_LOAD_LIST VALUES ('from streamlit prueba 13:30')")
     return "Thanks for adding" + new_fruit
 
+add_my_fruit = stramlit.text_input('What fruit would you like to add?')
+
 
   
 
