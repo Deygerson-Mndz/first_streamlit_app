@@ -3,6 +3,7 @@ import streamlit
 import pandas as pd
 import requests
 import snowflake.connector
+from urllib.error import URLError
 
 #Create a Fruit List Dataframe
 fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
@@ -25,11 +26,14 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 fruit_selected = streamlit.multiselect("Pick some fruit:", list(fruits_list.index),['Avocado', 'Strawberries'])
 fruit_to_show = fruits_list.loc[fruit_selected]
 streamlit.dataframe(fruit_to_show)
+streamlit.stop()
 
 #Header 
 streamlit.header('Fruityvice Fruit Advice!')
 fruit_choise = streamlit.text_input('What Fruit would you like information about?', 'kiwi')
 streamlit.write('The user entered', fruit_choise)
+streamlit.stop()
+
 #Varible with API response
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choise)
 fruityvice_response_normalized = pd.json_normalize(fruityvice_response.json())
@@ -42,6 +46,7 @@ my_cur.execute("SELECT * FROM FRUIT_LOAD_LIST")
 my_data_row = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_row)
+streamlit.stop()
 
 fruit_add = streamlit.text_input('What Fruit would you like add?', 'orange')
 streamlit.write('Thanks for adding', fruit_add)
