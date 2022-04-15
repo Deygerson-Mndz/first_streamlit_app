@@ -32,7 +32,7 @@ streamlit.dataframe(fruit_to_show)
 streamlit.header('Fruityvice Fruit Advice!')
 fruit_choise = streamlit.text_input('What Fruit would you like information about?', 'kiwi')
 streamlit.write('The user entered', fruit_choise)
-#streamlit.stop()
+
 
 #Varible with API response
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choise)
@@ -46,10 +46,10 @@ my_cur.execute("SELECT * FROM FRUIT_LOAD_LIST")
 my_data_row = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_row)
-streamlit.stop()
+
 
 fruit_add = streamlit.text_input('What Fruit would you like add?', 'orange')
 streamlit.write('Thanks for adding', fruit_add)
 
-my_cur.execute("INSERT INTO FRUIT_LOAD_LIST VALUES ('from streamlit')")
-
+my_cur.execute("INSERT INTO FRUIT_LOAD_LIST VALUES ('from streamlit prueba')")
+streamlit.stop()
