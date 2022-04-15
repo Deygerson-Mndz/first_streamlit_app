@@ -70,8 +70,11 @@ try:
   if not fruit_add:
     streamlit.error('Please select a fruit to add')
   else:
-    streamlit.button('Add a Fruit to the List'):
+    if streamlit.button('Add a Fruit to the List'):
       my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+      
+    
+      
       
 streamlit.stop()
 
