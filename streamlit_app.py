@@ -64,8 +64,10 @@ def insert_rows_into_snowflake(new_fruit):
   with my_cnx.cursor() as my_cur:
     my_cur.execute("INSERT INTO FRUIT_LOAD_LIST VALUES ('from streamlit prueba 13:30')")
     return "Thanks for adding" + new_fruit
-  
+
+agregar_fruta = streamlit.text_input('Desea agregar una nueva fruta?')
 streamlit.button('ESTO ES UN BOTON DE PRUEBA')
+
   
 
 
